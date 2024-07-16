@@ -20,26 +20,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
         children: [
           Text(
             currentQuestion.text,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(
             height: 30,
           ),
-          AnswerButton(
-            answerText: currentQuestion.answers[0],
-            ontap: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[1],
-            ontap: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[2],
-            ontap: () {},
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[3],
-            ontap: () {},
+          ...currentQuestion.answers.map(
+            (answer) {
+              return AnswerButton(answerText: answer, ontap: () {});
+            },
           ),
         ],
       ),
